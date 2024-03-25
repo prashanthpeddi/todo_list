@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .sup{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+.main{
+       width:400px;
+       height:500px;
+       background-color: antiquewhite;
+        border-radius: 10%;
+     
+      
+
+}
+.mani{
+    display: flex;
+    justify-content: center;
+}
+.hoo{
+    border-radius: 0%;
+    width: 300px;
+    height: 40px;
+}
+</style>
+
+<body>
+    <div class="sup">
+    <div class="main">
+        <h1 style="font-weight:900px; text-align: center;">Todo</h1>
+        <form class="mani">
+            <input type="text" placeholder="Add todo"  class="hoo" required>
+
+            <input type="submit" style="display: none;">
+
+        </form>
+        <h2 style="margin-left: 20px;">pending</h2>
+        <table id="tab" style="margin-left: 20px;">
+
+        </table>
+
+        <h2 style="margin-left: 20px;">complete</h2>
+        <table id="tabo" style="margin-left: 20px;"></table>
+
+    </div>
+    </div>
+    <script>
+        var d = document.forms;
+        // var obj = [];
+        console.log(d[0]);
+
+        d[0].addEventListener("submit", function (e) {
+            e.preventDefault();
+
+
+
+            av = e.target[0].value
+
+
+
+            // console.log(a)
+            // obj.push(av)
+            // console.log(obj)
+
+
+            var tb1 = document.getElementById("tab");
+            var tr1 = document.createElement("tr")
+            var td1 = document.createElement("td")
+            var td2 = document.createElement("td")
+            var td3 = document.createElement("td")
+
+
+            tr1.appendChild(td1)
+            tr1.appendChild(td2)
+            tr1.appendChild(td3)
+            tb1.appendChild(tr1);
+            e.target[0].value = "";
+
+            // for (i = 0; i < obj.length; i++) {
+
+            td1.innerHTML = av
+            td2.innerHTML = "<button style=margin-left:100px; class='tick'> &#10003;</button>"
+            td3.innerHTML = "<button style=margin-left:30px; class='wrong'> &#10005;</button>"
+
+
+
+
+            td2.querySelector(".tick").addEventListener("click", () => {
+                var aa = document.getElementById("tabo");
+                var trr = document.createElement("tr")
+                aa.appendChild(trr);
+                var tdd = document.createElement("td")
+                trr.appendChild(tdd)
+                var tddd = document.createElement("td")
+                trr.appendChild(tddd)
+
+                tdd.innerHTML = td1.innerHTML;
+                tddd.innerHTML = "<button style=margin-left:100px; class='wronge'> &#10005;</button>"
+                tr1.remove();
+                tddd.querySelector(".wronge").addEventListener("click", () => {
+                    trr.remove();
+                })
+
+            });
+            td3.querySelector(".wrong").addEventListener("click", () => {
+                tr1.remove();
+            })
+
+
+        })
+
+
+
+
+
+
+
+    </script>
+    </div>
+</body>
+
+</html>
